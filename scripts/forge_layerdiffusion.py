@@ -194,9 +194,9 @@ class LayerDiffusionForForge(scripts.Script):
 
         original_prompt = p.prompts[0]
 
-        fg_additional_prompt = fg_additional_prompt + ', ' + original_prompt if fg_additional_prompt != '' else None
-        bg_additional_prompt = bg_additional_prompt + ', ' + original_prompt if bg_additional_prompt != '' else None
-        blend_additional_prompt = blend_additional_prompt + ', ' + original_prompt if blend_additional_prompt != '' else None
+        fg_additional_prompt = fg_additional_prompt + ', ' + original_prompt if fg_additional_prompt else None
+        bg_additional_prompt = bg_additional_prompt + ', ' + original_prompt if bg_additional_prompt else None
+        blend_additional_prompt = blend_additional_prompt + ', ' + original_prompt if blend_additional_prompt  else None
 
         fg_cond = forge_clip_encode(p.sd_model, fg_additional_prompt)
         bg_cond = forge_clip_encode(p.sd_model, bg_additional_prompt)
