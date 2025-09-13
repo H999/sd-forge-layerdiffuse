@@ -32,10 +32,10 @@ class AttentionSharingUnit(torch.nn.Module):
         self.heads = module.heads
         self.frames = frames
         self.original_module = [module]
-        q_in_channels, q_out_channels = module.to_q.in_features, module.to_q.out_features
-        k_in_channels, k_out_channels = module.to_k.in_features, module.to_k.out_features
-        v_in_channels, v_out_channels = module.to_v.in_features, module.to_v.out_features
-        o_in_channels, o_out_channels = module.to_out[0].in_features, module.to_out[0].out_features
+        q_in_channels, q_out_channels = module.to_q.weight.shape[1], module.to_q.weight.shape[0]
+        k_in_channels, k_out_channels = module.to_k.weight.shape[1], module.to_k.weight.shape[0]
+        v_in_channels, v_out_channels = module.to_v.weight.shape[1], module.to_v.weight.shape[0]
+        o_in_channels, o_out_channels = module.to_out[0].weight.shape[1], module.to_out[0].weight.shape[0]
 
         hidden_size = k_out_channels
 
